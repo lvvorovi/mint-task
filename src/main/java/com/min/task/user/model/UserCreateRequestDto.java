@@ -8,10 +8,6 @@ import jakarta.validation.constraints.Size;
 public record UserCreateRequestDto(
 
         @NotBlank
-        @Size(max = 36, min = 36)
-        String id,
-
-        @NotBlank
         @Size(max = 10)
         String name
 
