@@ -30,6 +30,11 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'com.h2database:h2:2.1.214'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api'
+	testImplementation 'org.flywaydb:flyway-core'
+	testImplementation 'org.flywaydb:flyway-mysql'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 tasks.named('test') {

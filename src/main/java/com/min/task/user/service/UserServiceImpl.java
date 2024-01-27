@@ -1,5 +1,6 @@
 package com.min.task.user.service;
 
+import com.min.task.exception.BadRequestException;
 import com.min.task.user.entity.repository.UserRepository;
 import com.min.task.user.mapper.UserMapper;
 import com.min.task.user.model.UserCreateRequestDto;
@@ -23,7 +24,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto findById(String id) {
-        return null;
+        var userDto = repository.findById(id);
+        if (userDto.isEmpty()) {
+            throw new BadRequestException("User with id:%s does not exist".formatted(id));
+        }
+        return mapper.toDto(userDto.get());
     }
 
     @Override
