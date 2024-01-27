@@ -1,0 +1,21 @@
+spring:
+  appication:
+    name: task
+  datasource:
+    url: jdbc:h2:mem:mindb
+    username: test
+    password: test
+    driver-class-name: org.h2.Driver
+  flyway:
+    baselineOnMigrate: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      dialect: H2Dialect
+
+server:
+  port: 8082
+
+logging:
+  level:
+    root: DEBUG
