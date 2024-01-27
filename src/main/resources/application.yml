@@ -1,0 +1,23 @@
+spring:
+  appication:
+    name: task
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_SCHEMA:mindb}?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: ${DB_USER:root}
+    password: ${DB_PASS:root}
+    driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
+  flyway:
+    baselineOnMigrate: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
