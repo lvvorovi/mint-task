@@ -7,6 +7,6 @@ public interface UserService {
 
     UserResponseDto findById(String id);
 
-    UserResponseDto save(UserCreateRequestDto requestDto);
+    String save(UserCreateRequestDto requestDto);
 
 }

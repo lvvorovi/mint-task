@@ -17,15 +17,14 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository repository;
     private final AccountValidationService validationService;
-    private final AccountMapper mapper;
 
 
     @Override
     public List<AccountResponseDto> findAllByUserId(String userId) {
         validationService.validate(userId);
-        var accountEntityList = repository.findAllByUserId(userId);
-        log.info("{} accounts found with userId:{}", accountEntityList.size(), userId);
-        return mapper.toDto(accountEntityList);
+        var accountResponseDtoList = repository.findAllByUserId(userId);
+        log.info("{} accounts found with userId:{}", accountResponseDtoList.size(), userId);
+        return accountResponseDtoList;
     }
 
 }

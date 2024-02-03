@@ -16,5 +16,5 @@ public record AccountCreateRequestDto(
         @NotNull
         @JsonProperty("currency")
         Currency currency
-        ) {
+) {
 }
