@@ -4,8 +4,11 @@ import com.min.task.exception.BadRequestException;
 import com.min.task.exception.ErrorDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
@@ -18,6 +21,20 @@ public class CustomExceptionHandler {
     public ResponseEntity<ErrorDto> handleBadRequestException(BadRequestException ex) {
         log.info("BadRequestException: {}", ex.getMessage());
         var errorDto = new ErrorDto(BAD_REQUEST, ex.getMessage());
+
+        return ResponseEntity
+                .badRequest()
+                .body(errorDto);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ErrorDto> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+        var message = ex.getFieldErrors().stream()
+                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .collect(Collectors.joining(", "));
+
+        log.info("MethodArgumentNotValidException: {}", message);
+        var errorDto = new ErrorDto(BAD_REQUEST, message);
 
         return ResponseEntity
                 .badRequest()
