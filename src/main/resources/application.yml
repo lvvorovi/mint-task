@@ -21,3 +21,9 @@ server:
 logging:
   level:
     root: INFO
+
+api:
+  currency-data:
+    key: TkOpWqSWRtNL8cTBSvJU8uancJiwHoj6
+    base-url: https://api.apilayer.com/currency_data
+

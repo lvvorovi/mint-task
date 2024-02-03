@@ -1,10 +1,10 @@
 package com.min.task.user.service;
 
-import com.min.task.exception.BadRequestException;
-import com.min.task.user.entity.repository.UserRepository;
+import com.min.task.exception.UserDoesNotExistException;
+import com.min.task.user.dto.UserCreateRequestDto;
+import com.min.task.user.dto.UserResponseDto;
 import com.min.task.user.mapper.UserMapper;
-import com.min.task.user.model.UserCreateRequestDto;
-import com.min.task.user.model.UserResponseDto;
+import com.min.task.user.repository.UserRepository;
 import com.min.task.user.validation.service.UserValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     public UserResponseDto findById(String id) {
         var userDto = repository.findById(id);
         if (userDto.isEmpty()) {
-            throw new BadRequestException("User with id:%s does not exist".formatted(id));
+            throw new UserDoesNotExistException("User with id:%s does not exist".formatted(id));
         }
         return mapper.toDto(userDto.get());
     }

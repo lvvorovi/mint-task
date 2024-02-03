@@ -1,7 +1,7 @@
 package com.min.task.user.controller;
 
-import com.min.task.user.model.UserCreateRequestDto;
-import com.min.task.user.model.UserResponseDto;
+import com.min.task.user.dto.UserCreateRequestDto;
+import com.min.task.user.dto.UserResponseDto;
 import com.min.task.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

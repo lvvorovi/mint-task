@@ -1,6 +1,6 @@
 package com.min.task.user.validation.rule;
 
-import com.min.task.user.model.UserCreateRequestDto;
+import com.min.task.user.dto.UserCreateRequestDto;
 
 public interface UserCreateRequestValidationRule {
 

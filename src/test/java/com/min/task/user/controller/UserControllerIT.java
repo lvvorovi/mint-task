@@ -1,8 +1,8 @@
 package com.min.task.user.controller;
 
 import com.min.task.user.entity.UserEntity;
-import com.min.task.user.entity.repository.UserRepository;
-import com.min.task.user.model.UserCreateRequestDto;
+import com.min.task.user.repository.UserRepository;
+import com.min.task.user.dto.UserCreateRequestDto;
 import com.min.task.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ class UserControllerIT {
     @Test
     void findById_whenExists_thenReturn() throws Exception {
         var id = "8fb302e2-940d-49ae-a56a-1b17346a4507";
-        userRepository.save(new UserEntity(id, "testName"));
+        userRepository.save(new UserEntity(id, null, "testName"));
 
         mvc.perform(get("/api/v1/users/" + id))
                 .andExpect(status().isOk());
