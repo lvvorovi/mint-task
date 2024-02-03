@@ -23,5 +23,8 @@ logging:
     root: INFO
 
 api:
-  currency-api:
-    url: https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/{from}/{to}.json
+  currency-exchange:
+    list-url: https://currency-exchange.p.rapidapi.com/listquotes
+    exchange-url: https://currency-exchange.p.rapidapi.com/exchange
+    key: 431b1812demshfa66e987efe1fcfp17e0c7jsnef9d7f82d8fc
+    host: currency-exchange.p.rapidapi.com

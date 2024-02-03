@@ -11,7 +11,7 @@ public class CustomTransactionMapper implements TransactionMapper {
     @Override
     public TransactionEntity toEntity(TransactionRequest transactionRequest) {
         var entity = new TransactionEntity();
-        entity.setSourceAmount(transactionRequest.amount().negate());
+        entity.setDestinationAmount(transactionRequest.amount());
 
         var sourceAccountEntity = new AccountEntity();
         sourceAccountEntity.setId(transactionRequest.sourceAccountId());

@@ -11,11 +11,11 @@ import java.util.UUID;
 public class TransactionUtil {
 
 
-    public void setValuesOnCreation(TransactionEntity requestEntity, BigDecimal destinationAmount) {
+    public void setValuesOnCreation(TransactionEntity requestEntity, BigDecimal sourceAmount) {
 
         requestEntity.setId(UUID.randomUUID().toString());
         requestEntity.setCreated(LocalDateTime.now());
-        requestEntity.setDestinationAmount(destinationAmount);
+        requestEntity.setSourceAmount(sourceAmount.negate());
 
     }
 }
