@@ -11,4 +11,5 @@ public record UserCreateRequestDto(
         @Size(max = 10)
         String name
 
-) {}
+) {
+}

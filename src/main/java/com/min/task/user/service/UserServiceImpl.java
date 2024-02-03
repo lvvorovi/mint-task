@@ -24,20 +24,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto findById(String id) {
-        var userDto = repository.findById(id);
+        var userDto = repository.findDtoById(id);
         if (userDto.isEmpty()) {
             throw new UserDoesNotExistException("User with id:%s does not exist".formatted(id));
         }
-        return mapper.toDto(userDto.get());
+        return userDto.get();
     }
 
     @Override
-    public UserResponseDto save(UserCreateRequestDto requestDto) {
+    public String save(UserCreateRequestDto requestDto) {
         validationService.validate(requestDto);
         var requestEntity = mapper.toEntity(requestDto);
         requestEntity.setId(UUID.randomUUID().toString());
         var savedEntity = repository.save(requestEntity);
         log.info("User saved with id:{}", savedEntity.getId());
-        return mapper.toDto(savedEntity);
+        return savedEntity.getId();
     }
 }

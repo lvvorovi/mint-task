@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -32,8 +31,7 @@ public class AccountEntity {
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private UserEntity userEntity;
 
-    @OneToMany(mappedBy = "transactionEntity", cascade = CascadeType.REMOVE)
-    @OrderBy()
+    @OneToMany(mappedBy = "accountEntity", cascade = CascadeType.REMOVE)
     List<TransactionEntity> transactionEntityList;
 
     @Column(name = "currency")

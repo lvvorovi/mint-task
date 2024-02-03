@@ -26,12 +26,12 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserResponseDto> save(@RequestBody @Valid UserCreateRequestDto requestDto,
                                                 UriComponentsBuilder builder) {
-        var responseDto = service.save(requestDto);
+        var savedUserId = service.save(requestDto);
 
         return ResponseEntity
                 .created(builder
                         .path("/api/v1/users/{id}")
-                        .buildAndExpand(responseDto.getId())
+                        .buildAndExpand(savedUserId)
                         .toUri())
                 .build();
     }
