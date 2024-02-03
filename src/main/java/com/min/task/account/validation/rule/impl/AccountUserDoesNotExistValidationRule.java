@@ -1,6 +1,6 @@
-package com.min.task.acccount.validation.rule.impl;
+package com.min.task.account.validation.rule.impl;
 
-import com.min.task.acccount.validation.rule.AccountUserIdValidationRule;
+import com.min.task.account.validation.rule.AccountUserIdValidationRule;
 import com.min.task.exception.UserDoesNotExistException;
 import com.min.task.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

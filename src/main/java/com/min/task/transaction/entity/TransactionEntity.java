@@ -1,6 +1,6 @@
 package com.min.task.transaction.entity;
 
-import com.min.task.acccount.entity.AccountEntity;
+import com.min.task.account.entity.AccountEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -22,11 +22,18 @@ public class TransactionEntity {
     private String id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "account_id", nullable = false, updatable = false)
-    private AccountEntity accountEntity;
+    @JoinColumn(name = "account_id_from", nullable = false, updatable = false)
+    private AccountEntity sourceAccountEntity;
 
-    @Column(name = "amount")
-    private BigDecimal amount;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_id_to", nullable = false, updatable = false)
+    private AccountEntity destinationAccountEntity;
+
+    @Column(name = "amount_from")
+    private BigDecimal sourceAmount;
+
+    @Column(name = "amount_to")
+    private BigDecimal destinationAmount;
 
     @Column(name = "created", updatable = false, nullable = false)
     private LocalDateTime created;
