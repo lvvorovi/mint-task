@@ -1,6 +1,6 @@
 package com.min.task.account.repository;
 
-import com.min.task.account.dto.AccountResponseDto;
+import com.min.task.account.dto.AccountResponse;
 import com.min.task.account.entity.AccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,9 +12,9 @@ import java.util.Optional;
 public interface AccountRepository extends JpaRepository<AccountEntity, String> {
 
     @Query("""
-                SELECT new com.min.task.account.dto.AccountResponseDto(
+                SELECT new com.min.task.account.dto.AccountResponse(
                     a.id,
-                    new com.min.task.user.dto.UserResponseDto(u.id, u.name),
+                    new com.min.task.user.dto.UserResponse(u.id, u.name),
                     a.currency,
                     COALESCE(
                         COALESCE(SUM(CASE WHEN t.sourceAccountEntity.id = a.id THEN t.sourceAmount ELSE 0 END), 0) +
@@ -30,13 +30,13 @@ public interface AccountRepository extends JpaRepository<AccountEntity, String> 
                 GROUP BY a.id, u.id, u.name, a.currency
                 ORDER BY a.currency ASC
             """)
-    List<AccountResponseDto> findAllByUserId(@Param("userId") String userId);
+    List<AccountResponse> findAllByUserId(@Param("userId") String userId);
 
 
     @Query("""
-                SELECT new com.min.task.account.dto.AccountResponseDto(
+                SELECT new com.min.task.account.dto.AccountResponse(
                     a.id,
-                    new com.min.task.user.dto.UserResponseDto(u.id, u.name),
+                    new com.min.task.user.dto.UserResponse(u.id, u.name),
                     a.currency,
                     COALESCE(
                         COALESCE(SUM(CASE WHEN t.sourceAccountEntity.id = a.id THEN t.sourceAmount ELSE 0 END), 0) +
@@ -51,5 +51,5 @@ public interface AccountRepository extends JpaRepository<AccountEntity, String> 
                 WHERE a.id = :id
                 GROUP BY a.id, a.currency
             """)
-    Optional<AccountResponseDto> findDtoById(@Param("id") String id);
+    Optional<AccountResponse> findDtoById(@Param("id") String id);
 }

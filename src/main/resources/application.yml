@@ -1,6 +1,6 @@
 spring:
   appication:
-    name: task
+    name: mint-task
   datasource:
     url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_SCHEMA:mindb}?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true
     username: ${DB_USER:root}

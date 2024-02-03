@@ -1,6 +1,6 @@
 package com.min.task.currency;
 
-import com.min.task.conversion.service.CurrencyExchangeRequestProvider;
+import com.min.task.currency.conversion.request.provider.RequestProvider;
 import com.min.task.properties.CurrencyExchangeProperties;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +24,11 @@ public class CurrencyManager {
 
     private final RestTemplate restTemplate;
     private final CurrencyExchangeProperties properties;
+    private final RequestProvider requestProvider;
+
+    public static List<String> getCurrencyList() {
+        return List.copyOf(CURRENCY_LIST);
+    }
 
     @PostConstruct
     public void registerCurrencies() {
@@ -32,7 +37,7 @@ public class CurrencyManager {
                 .build()
                 .toUri();
 
-        var httpEntity = CurrencyExchangeRequestProvider.getRequest(properties);
+        var httpEntity = requestProvider.getRequest();
 
         var response = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, String.class);
         if (Objects.isNull(response.getBody())) {
@@ -45,11 +50,6 @@ public class CurrencyManager {
                 .toList();
 
         CURRENCY_LIST.addAll(currencyList);
-    }
-
-
-    public static List<String> getCurrencyList() {
-        return List.copyOf(CURRENCY_LIST);
     }
 
 }

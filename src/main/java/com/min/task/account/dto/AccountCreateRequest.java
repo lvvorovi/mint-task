@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public record AccountCreateRequestDto(
+public record AccountCreateRequest(
 
         @NotNull
         @JsonProperty("user")

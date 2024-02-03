@@ -12,10 +12,8 @@ public class TransactionUtil {
 
 
     public void setValuesOnCreation(TransactionEntity requestEntity, BigDecimal sourceAmount) {
-
         requestEntity.setId(UUID.randomUUID().toString());
         requestEntity.setCreated(LocalDateTime.now());
         requestEntity.setSourceAmount(sourceAmount.negate());
-
     }
 }

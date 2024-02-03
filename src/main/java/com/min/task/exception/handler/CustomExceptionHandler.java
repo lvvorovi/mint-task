@@ -43,7 +43,7 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<ErrorDto> handleRunTimeException(RuntimeException ex) {
-        log.warn("RuntimeException", ex);
+        log.warn("RuntimeException:", ex);
         var errorDto = new ErrorDto(INTERNAL_SERVER_ERROR, ex.getMessage());
 
         return ResponseEntity

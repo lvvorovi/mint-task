@@ -1,6 +1,6 @@
 package com.min.task.user.mapper;
 
-import com.min.task.user.dto.UserCreateRequestDto;
+import com.min.task.user.dto.UserCreateRequest;
 import com.min.task.user.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -13,7 +13,7 @@ public class UserModelMapper implements UserMapper {
     private final ModelMapper mapper;
 
     @Override
-    public UserEntity toEntity(UserCreateRequestDto requestDto) {
+    public UserEntity toEntity(UserCreateRequest requestDto) {
         return mapper.map(requestDto, UserEntity.class);
     }
 
