@@ -1,8 +1,8 @@
 package com.min.task.user.controller;
 
+import com.min.task.user.dto.UserCreateRequest;
 import com.min.task.user.entity.UserEntity;
 import com.min.task.user.repository.UserRepository;
-import com.min.task.user.dto.UserCreateRequestDto;
 import com.min.task.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ class UserControllerIT {
 
     @Test
     void save() throws Exception {
-        var userRequest = new UserCreateRequestDto("testName");
+        var userRequest = new UserCreateRequest("testName");
         mvc.perform(post("/api/v1/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(JsonUtil.objectToJson(userRequest)))

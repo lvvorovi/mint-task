@@ -2,7 +2,7 @@ package com.min.task.transaction.validation.rule.impl;
 
 import com.min.task.account.repository.AccountRepository;
 import com.min.task.currency.CurrencyManager;
-import com.min.task.exception.NotSupportedCurrencyException;
+import com.min.task.exception.CurrencyNotSupportedException;
 import com.min.task.transaction.dto.TransactionRequest;
 import com.min.task.transaction.validation.rule.TransactionRequestPreValidationRule;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class SourceCurrencySupportedTransactionPreValidationRule implements Tran
                 .ifPresent(account -> {
                     if (!CurrencyManager.getCurrencyList().contains(account.currency())) {
                         log.info("Requested currency:{} is not supported", account.currency());
-                        throw new NotSupportedCurrencyException("Requested currency:%s is no longer supported"
+                        throw new CurrencyNotSupportedException("Requested currency:%s is no longer supported"
                                 .formatted(account.currency()));
                     }
                 });

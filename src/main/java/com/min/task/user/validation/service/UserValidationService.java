@@ -1,8 +1,8 @@
 package com.min.task.user.validation.service;
 
-import com.min.task.user.dto.UserCreateRequestDto;
+import com.min.task.user.dto.UserCreateRequest;
 
 public interface UserValidationService {
 
-    void validate(UserCreateRequestDto requestDto);
+    void validate(UserCreateRequest requestDto);
 }

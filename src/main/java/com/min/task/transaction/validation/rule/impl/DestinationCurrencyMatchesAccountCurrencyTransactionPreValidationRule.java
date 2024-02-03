@@ -1,7 +1,7 @@
 package com.min.task.transaction.validation.rule.impl;
 
 import com.min.task.account.repository.AccountRepository;
-import com.min.task.exception.AccountIdDoesNotExistException;
+import com.min.task.exception.CurrencyMismatchException;
 import com.min.task.transaction.dto.TransactionRequest;
 import com.min.task.transaction.validation.rule.TransactionRequestPreValidationRule;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class DestinationCurrencyMatchesAccountCurrencyTransactionPreValidationRu
                 .ifPresent(account -> {
                             if (!account.currency().equalsIgnoreCase(request.destinationCurrency())) {
                                 log.info("Destination currency does not match source account currency");
-                                throw new AccountIdDoesNotExistException(
+                                throw new CurrencyMismatchException(
                                         "Destination currency does not match source account currency");
                             }
                         }

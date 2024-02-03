@@ -1,13 +1,13 @@
 package com.min.task.account.dto;
 
-import com.min.task.user.dto.UserResponseDto;
+import com.min.task.user.dto.UserResponse;
 
 import java.math.BigDecimal;
 
 
-public record AccountResponseDto(
+public record AccountResponse(
         String id,
-        UserResponseDto userResponseDto,
+        UserResponse userResponse,
         String currency,
         BigDecimal balance
 ) {

@@ -1,7 +1,7 @@
 package com.min.task.user.controller;
 
-import com.min.task.user.dto.UserCreateRequestDto;
-import com.min.task.user.dto.UserResponseDto;
+import com.min.task.user.dto.UserCreateRequest;
+import com.min.task.user.dto.UserResponse;
 import com.min.task.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +24,8 @@ public class UserController {
     private final UserService service;
 
     @PostMapping
-    public ResponseEntity<UserResponseDto> save(@RequestBody @Valid UserCreateRequestDto requestDto,
-                                                UriComponentsBuilder builder) {
+    public ResponseEntity<UserResponse> save(@RequestBody @Valid UserCreateRequest requestDto,
+                                             UriComponentsBuilder builder) {
         var savedUserId = service.save(requestDto);
 
         return ResponseEntity
@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> findById(@PathVariable String id) {
+    public ResponseEntity<UserResponse> findById(@PathVariable String id) {
         return ResponseEntity
                 .ok(service.findById(id));
     }

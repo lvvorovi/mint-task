@@ -1,5 +1,7 @@
-package com.min.task.conversion.service;
+package com.min.task.currency.conversion.service.impl;
 
+import com.min.task.currency.conversion.request.provider.RequestProvider;
+import com.min.task.currency.conversion.service.ConversionService;
 import com.min.task.properties.CurrencyExchangeProperties;
 import com.min.task.transaction.dto.TransactionRequest;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +20,10 @@ public class CurrencyExchangeConversionService implements ConversionService {
 
     private final RestTemplate restTemplate;
     private final CurrencyExchangeProperties properties;
+    private final RequestProvider requestProvider;
 
     @Override
-    public BigDecimal convert(TransactionRequest transactionRequest) {
+    public BigDecimal convertToSourceAmount(TransactionRequest transactionRequest) {
         var uri = UriComponentsBuilder
                 .fromUriString(properties.getExchangeUrl())
                 .queryParam("from", transactionRequest.destinationCurrency())
@@ -28,7 +31,7 @@ public class CurrencyExchangeConversionService implements ConversionService {
                 .build()
                 .toUri();
 
-        var httpEntity = CurrencyExchangeRequestProvider.getRequest(properties);
+        var httpEntity = requestProvider.getRequest();
 
         var response = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, String.class);
 
