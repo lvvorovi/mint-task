@@ -1,4 +1,4 @@
-package com.min.task.user.entity.repository;
+package com.min.task.user.repository;
 
 import com.min.task.user.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
