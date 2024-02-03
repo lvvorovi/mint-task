@@ -1,4 +1,4 @@
-package com.min.task.acccount.validation;
+package com.min.task.account.validation;
 
 public interface AccountValidationService {
 

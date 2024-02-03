@@ -1,6 +1,6 @@
-package com.min.task.acccount.service;
+package com.min.task.account.service;
 
-import com.min.task.acccount.dto.AccountResponseDto;
+import com.min.task.account.dto.AccountResponseDto;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.min.task.user.entity;
 
-import com.min.task.acccount.entity.AccountEntity;
+import com.min.task.account.entity.AccountEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

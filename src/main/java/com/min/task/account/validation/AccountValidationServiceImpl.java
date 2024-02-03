@@ -1,6 +1,6 @@
-package com.min.task.acccount.validation;
+package com.min.task.account.validation;
 
-import com.min.task.acccount.validation.rule.AccountUserIdValidationRule;
+import com.min.task.account.validation.rule.AccountUserIdValidationRule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

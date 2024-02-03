@@ -23,7 +23,5 @@ logging:
     root: INFO
 
 api:
-  currency-data:
-    key: TkOpWqSWRtNL8cTBSvJU8uancJiwHoj6
-    base-url: https://api.apilayer.com/currency_data
-
+  currency-api:
+    url: https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/{from}/{to}.json

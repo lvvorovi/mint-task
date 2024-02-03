@@ -1,4 +1,4 @@
-package com.min.task.acccount.validation.rule;
+package com.min.task.account.validation.rule;
 
 public interface AccountUserIdValidationRule {
 

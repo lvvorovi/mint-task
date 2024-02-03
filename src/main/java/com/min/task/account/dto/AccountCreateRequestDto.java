@@ -1,4 +1,4 @@
-package com.min.task.acccount.dto;
+package com.min.task.account.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.min.task.cons.Currency;

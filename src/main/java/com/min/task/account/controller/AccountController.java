@@ -1,7 +1,7 @@
-package com.min.task.acccount.controller;
+package com.min.task.account.controller;
 
-import com.min.task.acccount.dto.AccountResponseDto;
-import com.min.task.acccount.service.AccountService;
+import com.min.task.account.dto.AccountResponseDto;
+import com.min.task.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

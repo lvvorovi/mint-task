@@ -1,4 +1,4 @@
-package com.min.task.acccount.entity;
+package com.min.task.account.entity;
 
 import com.min.task.cons.Currency;
 import com.min.task.transaction.entity.TransactionEntity;
@@ -31,8 +31,11 @@ public class AccountEntity {
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private UserEntity userEntity;
 
-    @OneToMany(mappedBy = "accountEntity", cascade = CascadeType.REMOVE)
-    List<TransactionEntity> transactionEntityList;
+    @OneToMany(mappedBy = "sourceAccountEntity", cascade = CascadeType.REMOVE)
+    List<TransactionEntity> outgoingTransactionEntityList;
+
+    @OneToMany(mappedBy = "destinationAccountEntity", cascade = CascadeType.REMOVE)
+    List<TransactionEntity> incomingTransactionEntityList;
 
     @Column(name = "currency")
     @Enumerated(EnumType.STRING)
