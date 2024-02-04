@@ -48,7 +48,7 @@ public class TransactionService {
     }
 
     public Page<TransactionResponse> findPageByAccountId(String accountId, Pageable pageable) {
-        var transactionDtoPage = repository.findDtoListByAccountIdPaged(accountId, pageable);
+        var transactionDtoPage = repository.findPageByAccountId(accountId, pageable);
         log.info("{} transactions found for accountId:{}", transactionDtoPage.getContent().size(), accountId);
         return transactionDtoPage;
     }

@@ -24,7 +24,7 @@ public interface TransactionRepository extends JpaRepository<TransactionEntity, 
             FROM TransactionEntity t
             WHERE (t.sourceAccountEntity.id = :accountId OR t.destinationAccountEntity.id = :accountId)
             """)
-    Page<TransactionResponse> findDtoListByAccountIdPaged(String accountId, Pageable pageable);
+    Page<TransactionResponse> findPageByAccountId(String accountId, Pageable pageable);
 
     @Query("""
             SELECT new com.min.task.transaction.dto.TransactionResponse(

@@ -1,4 +1,4 @@
-package com.min.task.util;
+package com.min.task.test.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

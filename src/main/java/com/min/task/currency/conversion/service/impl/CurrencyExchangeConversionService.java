@@ -33,6 +33,12 @@ public class CurrencyExchangeConversionService implements ConversionService {
 
         var httpEntity = requestProvider.getRequest();
 
+         /*
+          *   TODO Implement try/catch with resilience4j, retry, and fallback to get latest from DB.
+          *     rates are being saved when loaded from API with id as currency pair,
+          *     overriding previously saved values.
+          *     Not implemented due to lack of time.
+          */
         var response = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, String.class);
 
         return transactionRequest.amount()
