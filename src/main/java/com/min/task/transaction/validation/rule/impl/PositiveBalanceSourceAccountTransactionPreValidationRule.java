@@ -33,7 +33,7 @@ public class PositiveBalanceSourceAccountTransactionPreValidationRule implements
                                 sourceAmount);
 
                         throw new NotEnoughAccountBalanceException(
-                                "Not Enough balance on account with id: %s"
+                                "Not enough balance on account with id: %s"
                                         .formatted(request.sourceAccountId()));
                     }
                 });

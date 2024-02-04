@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -39,17 +40,23 @@ public class CurrencyManager {
 
         var httpEntity = requestProvider.getRequest();
 
-        var response = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, String.class);
-        if (Objects.isNull(response.getBody())) {
-            throw new IllegalStateException("Exchange Rate Api support no currencies");
-        }
-        var currencyList = Arrays.stream(response.getBody().replace("[", "")
-                        .replace("]", "")
-                        .replace("\"", "")
-                        .split(","))
-                .toList();
+        try {
+            var response = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, String.class);
+            if (Objects.isNull(response.getBody())) {
+                throw new IllegalStateException("Exchange Rate Api support no currencies");
+            }
+            var currencyList = Arrays.stream(response.getBody().replace("[", "")
+                            .replace("]", "")
+                            .replace("\"", "")
+                            .split(","))
+                    .toList();
 
-        CURRENCY_LIST.addAll(currencyList);
+            CURRENCY_LIST.addAll(currencyList);
+        } catch (RestClientException ex) {
+            log.error("Exception while fetching currency list from api", ex);
+            throw new IllegalStateException("Cannot continue without supported currencies");
+        }
+
     }
 
 }

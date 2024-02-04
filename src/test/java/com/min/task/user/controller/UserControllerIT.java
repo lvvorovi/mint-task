@@ -3,7 +3,7 @@ package com.min.task.user.controller;
 import com.min.task.user.dto.UserCreateRequest;
 import com.min.task.user.entity.UserEntity;
 import com.min.task.user.repository.UserRepository;
-import com.min.task.util.JsonUtil;
+import com.min.task.test.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

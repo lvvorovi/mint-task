@@ -1,6 +1,5 @@
 package com.min.task.transaction.validation.rule.impl;
 
-import com.min.task.account.repository.AccountRepository;
 import com.min.task.currency.CurrencyManager;
 import com.min.task.exception.CurrencyNotSupportedException;
 import com.min.task.transaction.dto.TransactionRequest;
@@ -16,18 +15,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class SourceCurrencySupportedTransactionPreValidationRule implements TransactionRequestPreValidationRule {
 
-    private final AccountRepository accountRepository;
-
     @Override
     public void validate(TransactionRequest request) {
-        accountRepository.findDtoById(request.sourceAccountId())
-                .ifPresent(account -> {
-                    if (!CurrencyManager.getCurrencyList().contains(account.currency())) {
-                        log.info("Requested currency:{} is not supported", account.currency());
-                        throw new CurrencyNotSupportedException("Requested currency:%s is no longer supported"
-                                .formatted(account.currency()));
-                    }
-                });
-
+        if (!CurrencyManager.getCurrencyList().contains(request.sourceCurrency())) {
+            log.info("Requested currency:{} is not supported", request.sourceCurrency());
+            throw new CurrencyNotSupportedException("Requested currency:%s is no longer supported"
+                    .formatted(request.sourceCurrency()));
+        }
     }
 }
