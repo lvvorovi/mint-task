@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "168bbe0a-bf71-4500-b95b-3fba28e59cef",
+		"name": "Mintos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12306669"
+	},
+	"item": [
+		{
+			"name": "getUserById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://13.50.157.141/api/v1/users/685c4564-6d7c-40c9-a004-1b478931f49e",
+					"protocol": "http",
+					"host": [
+						"13",
+						"50",
+						"157",
+						"141"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"685c4564-6d7c-40c9-a004-1b478931f49e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccountListByUserId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://13.50.157.141/api/v1/users/685c4564-6d7c-40c9-a004-1b478931f49e/accounts",
+					"protocol": "http",
+					"host": [
+						"13",
+						"50",
+						"157",
+						"141"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"685c4564-6d7c-40c9-a004-1b478931f49e",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTransactionListByAccountId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://13.50.157.141/api/v1/users/685c4564-6d7c-40c9-a004-1b478931f49e/transactions/accounts/9f8062e2-3017-4335-a5b5-151fc50bfa08",
+					"protocol": "http",
+					"host": [
+						"13",
+						"50",
+						"157",
+						"141"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"685c4564-6d7c-40c9-a004-1b478931f49e",
+						"transactions",
+						"accounts",
+						"9f8062e2-3017-4335-a5b5-151fc50bfa08"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postTransactionRequest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sourceAccountId\": \"9f8062e2-3017-4335-a5b5-151fc50bfa08\",\n    \"destinationAccountId\": \"3c6b75bb-ed25-46ef-855a-cde4218d3b44\",\n    \"sourceCurrency\": \"USD\",\n    \"destinationCurrency\": \"GBP\",\n    \"amount\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://13.50.157.141/api/v1/users/685c4564-6d7c-40c9-a004-1b478931f49e/transactions",
+					"protocol": "http",
+					"host": [
+						"13",
+						"50",
+						"157",
+						"141"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"685c4564-6d7c-40c9-a004-1b478931f49e",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postTransactionRequest Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sourceAccountId\": \"3c6b75bb-ed25-46ef-855a-cde4218d3b44\",\n    \"destinationAccountId\": \"9f8062e2-3017-4335-a5b5-151fc50bfa08\",\n    \"sourceCurrency\": \"GBP\",\n    \"destinationCurrency\": \"USD\",\n    \"amount\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://13.50.157.141/api/v1/users/685c4564-6d7c-40c9-a004-1b478931f49e/transactions",
+					"protocol": "http",
+					"host": [
+						"13",
+						"50",
+						"157",
+						"141"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"685c4564-6d7c-40c9-a004-1b478931f49e",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
